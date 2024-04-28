@@ -173,7 +173,6 @@ int SecRilOpen()
     rilc->call_forward = false;
 
     rilc->usbmic_state = false;
-    rilc->hac_mode = false;
 
     /*
      * Open & Connect SecRil Audio Client Library
@@ -487,18 +486,6 @@ int SecRilSetVoLTEState(int state)
     return ret;
 }
 
-int SecRilSetHACMode(bool state)
-{
-    struct rilclient_intf *rilc = getInstance();
-    int ret = 0;
-
-    if(rilc) {
-        rilc->hac_mode = state;
-    }
-
-    return ret;
-}
-
 void SecRilSetCallFowardingMode(bool callFwd)
 {
     struct rilclient_intf *rilc = getInstance();
@@ -546,9 +533,4 @@ void SecRilSetUSBMicState(bool state)
     }
 
     return ;
-}
-
-int SecRilSetTTYmode(int __unused ttymode)
-{
-    return 0;
 }
